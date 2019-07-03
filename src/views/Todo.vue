@@ -1,45 +1,51 @@
 <template>
-  <div>
-    <div class="main">
+  <div class="container todo">
+    <div class="todo-title">
       <h1>Todo App</h1>
-      <b-row>
-        <FormTodo :loading="loading" :todoObj="todoObj" v-on:submitForm="addTodoMethod"/>
-        <b-col cols="1"></b-col>
-        <b-col cols="7">
-          <h4>List of Activity</h4>
-          <!-- Show a message there's no ToDo added yet -->
-          <div v-if="todoIsEmpty">
-            <b-alert show variant="danger">Whoops! There is no ToDo added yet.</b-alert>
-          </div>
-          <!-- Show a table contains list of ToDo -->
-          <div v-else>
-            <div class="table-col">
-              <TableTodo
-                :listOfTodo="todos"
-                :tableField="fields"
-                v-on:deleteTodo="deleteTodoMethod"
-                v-on:editTodo="showModal"
-              />
-            </div>
-          </div>
-        </b-col>
-      </b-row>
-      <ModalTodo :todo="selectedTodo" v-on:setLoading="setLoading"/>
     </div>
+    <b-row class="justify-content-md-center">
+      <b-col cols="4">
+        <h4>Add your todo here</h4>
+        <FormTodo :loading="loading" :todoObj="todoObj" v-on:submitForm="addTodoMethod" />
+      </b-col>
+      <div class="vertical-line"></div>
+      <b-col cols="7">
+        <h4>List of Activity</h4>
+        <!-- Show a message there's no ToDo added yet -->
+        <div v-if="todoIsEmpty">
+          <b-alert show variant="danger">Whoops! There is no ToDo added yet.</b-alert>
+        </div>
+        <!-- Show a table contains list of ToDo -->
+        <div v-else>
+          <div class="table-col">
+            <TableTodo
+              :listOfTodo="todos"
+              :tableField="fields"
+              v-on:deleteTodo="deleteTodoMethod"
+              v-on:editTodo="showModal"
+            />
+          </div>
+        </div>
+      </b-col>
+    </b-row>
+    <ModalTodo :todo="selectedTodo" v-on:setLoading="setLoading" />
   </div>
 </template>
 
+<style>
+</style>
+
 <script>
 import { mapGetters, mapActions, mapState } from "vuex";
-import { FormTodo, ModalTodo, TableTodo } from "./TodoComponents";
+import { FormTodo, TableTodo, ModalTodo } from "../components/TodoComponents";
 import { setTimeout } from "timers";
 
 export default {
-  name: "TodoContainer",
+  name: "Todo",
   components: {
-    ModalTodo,
     FormTodo,
-    TableTodo
+    TableTodo,
+    ModalTodo
   },
   created() {
     this.$store.dispatch("loadTodos");
@@ -48,7 +54,6 @@ export default {
     return {
       todoObj: { description: "", date: "" },
       selectedTodo: { id: "", description: "", date: "" },
-      showAlert: true,
       loading: false,
       fields: [
         {
@@ -145,12 +150,24 @@ th {
   border-radius: 2%;
   padding: 16px;
   margin-bottom: 20px;
-  -webkit-box-shadow: 5px 2px 5px 3px rgba(139, 140, 133, 0.56);
-  -moz-box-shadow: 5px 2px 5px 3px rgba(139, 140, 133, 0.56);
-  box-shadow: 5px 2px 5px 3px rgba(139, 140, 133, 0.56);
 }
 
 [v-cloak]::after {
-  display: none!important;
+  display: none !important;
 }
+
+div[class*="col"] h4 {
+  margin-bottom: 20px;
+}
+
+.vertical-line{
+  margin: -20px 20px -10px 40px;
+  border-right: 1px solid rgb(219, 207, 207);
+}
+
+.todo-title{
+  margin: 20px auto;
+  border-bottom: 1px solid rgb(219, 207, 207);
+}
+
 </style>

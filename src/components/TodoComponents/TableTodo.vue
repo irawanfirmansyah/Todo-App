@@ -1,7 +1,7 @@
 <template>
   <b-table
-    striped
     hover
+    outlined
     responsive
     :items="listOfTodo"
     :fields="tableField"
@@ -92,7 +92,6 @@ export default {
       var dateDiffMS = now.getTime() - itemDate.getTime();
       let dateDiffDays;
       dateDiffDays = Math.floor(dateDiffMS / (1000 * 3600 * 24));
-      console.log(dateDiffDays);
       if (dateDiffDays >= 7) {
         return "table-warning";
       }

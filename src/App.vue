@@ -21,7 +21,9 @@
         </nav>
       </header>
       <div id="main">
-        <router-view/>
+        <transition name="fade" mode="out-in">
+          <router-view />
+        </transition>
       </div>
     </div>
     <footer id="footer">
@@ -105,7 +107,7 @@ nav {
 
 nav ul {
   display: flex;
-  justify-content: start;
+  justify-content: center;
   list-style: none;
   margin: 5px 0px 0px 0px;
   padding: 0;
@@ -140,5 +142,14 @@ nav a:hover {
 
 nav a.router-link-exact-active {
   color: white;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter, .fade-leave-to{
+  opacity: 0;
 }
 </style>

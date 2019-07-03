@@ -98,4 +98,8 @@ li {
 a {
   color: #42b983;
 }
+
+.hello > p {
+  text-align: center;
+}
 </style>
