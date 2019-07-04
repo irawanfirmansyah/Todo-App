@@ -152,7 +152,7 @@ export default {
 .label {
   position: relative;
   width: 100%;
-  max-width: 260px;
+  max-width: 280px;
   margin: 0px 20px;
 }
 
@@ -205,12 +205,12 @@ export default {
 }
 
 .label .input:not(:placeholder-shown) + span {
-  transform: translateY(-18px) scale(0.75);
+  transform: translateY(-15px) scale(0.75);
 }
 
 .label .input:focus + span {
   color: #276f4e;
-  transform: translateY(-18px) scale(0.75);
+  transform: translateY(-15px) scale(0.75);
 }
 
 .label .input:focus ~ .border-label {
