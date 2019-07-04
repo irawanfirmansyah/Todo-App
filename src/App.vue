@@ -1,25 +1,25 @@
 <template>
   <div id="appWrapper">
+    <header>
+      <nav>
+        <div class="navbar-container">
+          <ul>
+            <li>
+              <router-link class="link" to="/">Home</router-link>
+            </li>
+            <li class="separator">|</li>
+            <li>
+              <router-link class="link" to="/about">About</router-link>
+            </li>
+            <li class="separator">|</li>
+            <li>
+              <router-link class="link" to="/todo">Todo</router-link>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
     <div id="app">
-      <header>
-        <nav>
-          <div class="navbar-container">
-            <ul>
-              <li>
-                <router-link class="link" to="/">Home</router-link>
-              </li>
-              <li class="separator">|</li>
-              <li>
-                <router-link class="link" to="/about">About</router-link>
-              </li>
-              <li class="separator">|</li>
-              <li>
-                <router-link class="link" to="/todo">Todo</router-link>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </header>
       <div id="main">
         <transition name="fade" mode="out-in">
           <router-view />
@@ -149,7 +149,8 @@ nav a.router-link-exact-active {
   transition: opacity 0.3s ease;
 }
 
-.fade-enter, .fade-leave-to{
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 </style>

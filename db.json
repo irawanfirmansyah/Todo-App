@@ -1,24 +1,19 @@
 {
   "todos": [
     {
-      "description": "First todo in June 26, 2019",
-      "date": "2019-06-26",
-      "id": "_pdtctr85g"
+      "description": "Lets add some todo",
+      "date": "2019-01-01",
+      "id": "_fkrn57jcv"
     },
     {
-      "description": "asdasdasdsa",
-      "date": "2019-07-03",
-      "id": "_2q5y7ap2d"
+      "description": "2nd todo please",
+      "date": "2019-01-31",
+      "id": "_wft7dyiw8"
     },
     {
-      "description": "asdsadsadasda",
-      "date": "2019-07-03",
-      "id": "_d1wzpmceo"
-    },
-    {
-      "description": "safsfwdqwdwqd",
-      "date": "2019-07-03",
-      "id": "_risyzvxhe"
+      "description": "3rd todo would be okay, right?",
+      "date": "2019-12-31",
+      "id": "_jlbqsq36s"
     }
   ]
 }

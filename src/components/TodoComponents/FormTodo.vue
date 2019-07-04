@@ -1,8 +1,44 @@
 <template>
-  <b-form class="form-col" @submit="submitMethod">
+  <form @submit="submitMethod">
+    <div class="input-container">
+      <label class="label" for="todoDescription">
+        <input
+          placeholder=" "
+          class="input"
+          id="todoDescription"
+          v-model="todoObj.description"
+          type="text"
+          pattern=".{10,50}"
+          required
+        />
+        <span class="placeholder">Username</span>
+        <span class="border-label"></span>
+        <p class="input-length">{{todoObj.description.length}} out of 50 characters</p>
+      </label>
+    </div>
+    <div class="input-container">
+      <label class="label" for="date">
+        <input
+          placeholder=" "
+          class="input"
+          id="date"
+          v-model="todoObj.date"
+          type="date"
+          pattern=".{10,50}"
+          required
+        />
+        <span class="placeholder">Date</span>
+        <span class="border-label"></span>
+      </label>
+    </div>
+    <button class="c-btn" type="submit">
+      <span>Add</span>
+    </button>
+  </form>
+  <!-- <b-form class="form-col" @submit="submitMethod">
     <div v-if="isLoading">
       <div>Loading ...</div>
-      <!-- <pulse-loader :loading="true"></pulse-loader> -->
+      <pulse-loader :loading="true"></pulse-loader>
     </div>
     <div v-else>
       <b-form-group label="Todo description">
@@ -26,11 +62,11 @@
           aria-required="true"
         ></b-form-input>
       </b-form-group>
-      <button class="btn-todo" type="submit">
+      <button class="c-btn" type="submit">
         <span>Add</span>
       </button>
     </div>
-  </b-form>
+  </b-form>-->
 </template>
 
 <script>
@@ -63,7 +99,7 @@ export default {
   border: 1px solid rgba(139, 140, 133, 0.56);
   background-color: #f1f0f0e7;
 }
-.btn-todo {
+.c-btn {
   background: #008000;
   color: white;
   transition: 0.5s;
@@ -72,9 +108,15 @@ export default {
   height: auto;
   padding: 2px 10px;
   border-radius: 0.2rem;
+  margin: 10px auto;
 }
 
-.btn-todo:hover {
+.c-btn:hover {
   background: #4ca64c;
+}
+
+.label .input-length {
+  position: absolute;
+  font-size: 12px;
 }
 </style>

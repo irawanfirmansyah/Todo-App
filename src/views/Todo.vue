@@ -4,11 +4,10 @@
       <h1>Todo App</h1>
     </div>
     <b-row class="justify-content-md-center">
-      <b-col cols="4">
+      <b-col cols="5">
         <h4>Add your todo here</h4>
         <FormTodo :loading="loading" :todoObj="todoObj" v-on:submitForm="addTodoMethod" />
       </b-col>
-      <div class="vertical-line"></div>
       <b-col cols="7">
         <h4>List of Activity</h4>
         <!-- Show a message there's no ToDo added yet -->
@@ -166,8 +165,7 @@ div[class*="col"] h4 {
 }
 
 .todo-title{
-  margin: 20px auto;
-  border-bottom: 1px solid rgb(219, 207, 207);
+  margin: 30px auto;
 }
 
 </style>
