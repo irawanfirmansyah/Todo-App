@@ -1,5 +1,5 @@
 import { TableTodo } from '@/components/TodoComponents'
-import Todo from '@/components/TodoContainer.vue'
+import Todo from '@/views/Todo.vue'
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 import BootstrapVue from 'bootstrap-vue'
 import Vuex from 'vuex'
