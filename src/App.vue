@@ -1,6 +1,6 @@
 <template>
   <div id="appWrapper">
-    <header>
+    <header class="header">
       <nav>
         <div class="navbar-container">
           <ul>
@@ -69,7 +69,7 @@ body {
   color: white;
 }
 
-header {
+.header {
   background: #276f4e;
 }
 

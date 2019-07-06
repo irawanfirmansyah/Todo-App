@@ -70,10 +70,12 @@ export default {
   methods: {
     ...mapActions(["addTodo", "deleteTodo"]),
     addTodoMethod() {
-      //create todo object
+      //Create todo object with unique ID
       this.todoObj.id = this.uniqueIdGenerator();
       const todo = { ...this.todoObj };
+
       this.$store.dispatch("addTodo", { todo });
+      
       this.todoObj.id = "";
       this.todoObj.description = "";
       this.todoObj.date = "";

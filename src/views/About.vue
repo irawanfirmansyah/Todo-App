@@ -1,79 +1,97 @@
 <template>
   <div class="about">
     <h1>This is actually not an about page...</h1>
-    <div class="input-container">
-      <label class="label" for="inputTxtArea">
-        <textarea rows="5" class="input" placeholder=" " v-model="txtAreaInput" id="inputTxtArea"></textarea>
-        <span class="placeholder">Description</span>
-        <span class="border-label border-label__txt-area"></span>
-        <span class="error-msg">Username must at least 5 characters and max 16 characters</span>
-      </label>
-    </div>
-    <div class="input-container">
-      <label class="label" for="inputUsername">
-        <input
-          placeholder=" "
-          class="input"
-          id="inputUsername"
-          v-model="usernameInput"
-          @input="handleInput"
-          type="text"
-          pattern=".{5,16}"
-        />
-        <span class="placeholder">Username</span>
-        <span class="border-label"></span>
-        <p class="input-length">test123</p>
-      </label>
-    </div>
-    <div class="input-container">
-      <label class="label" for="inputPassword">
-        <input
-          placeholder=" "
-          class="input"
-          id="inputPassword"
-          v-model="passwordInput"
-          @input="handleInput"
-          type="password"
-        />
-        <span class="placeholder">Password</span>
-        <span class="border-label"></span>
-      </label>
-    </div>
-    <div class="valid-container">
-      <ul class="valid__ul">
-        <li class="valid__li">
-          <div class="flex-middle">
-            <div class="valid__img-bckgrd" v-bind:class="{checked: containsUpperCase}"></div>
-            <div>Contains Upper Case</div>
-          </div>
-        </li>
-        <li class="valid__li">
-          <div class="flex-middle">
-            <div class="valid__img-bckgrd" v-bind:class="{checked: containsLowerCase}"></div>
-            <div>Contains Lower Case</div>
-          </div>
-        </li>
-        <li class="valid__li">
-          <div class="flex-middle">
-            <div class="valid__img-bckgrd" v-bind:class="{checked: containsNumber}"></div>
-            <div>Contains Number</div>
-          </div>
-        </li>
-        <li class="valid__li">
-          <div class="flex-middle">
-            <div class="valid__img-bckgrd" v-bind:class="{checked: containsSymbol}"></div>
-            <div>Contains symbol</div>
-          </div>
-        </li>
-        <li class="valid__li">
-          <div class="flex-middle">
-            <div class="valid__img-bckgrd" v-bind:class="{checked: inputLengthValid}"></div>
-            <div>Length greater than or equal to 8</div>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <button class="c-btn" @click="handleClick">Submit</button>
+    <form @submit.prevent="handleSubmit">
+      <div class="input-container">
+        <label class="label" for="inputTxtArea">
+          <textarea
+            required
+            rows="5"
+            class="input"
+            placeholder=" "
+            v-model="txtAreaInput"
+            id="inputTxtArea"
+          ></textarea>
+          <span class="placeholder">Description</span>
+          <span class="border-label border-label__txt-area"></span>
+        </label>
+      </div>
+      <div class="input-container">
+        <label class="label" for="inputUsername">
+          <input
+            required
+            placeholder=" "
+            class="input"
+            id="inputUsername"
+            v-model="usernameInput"
+            @input="handleInput"
+            type="text"
+            pattern="[A-Za-z0-9]{6,15}"
+          />
+          <span class="placeholder">Username</span>
+          <span class="border-label"></span>
+          <span id="usnError" class="error-msg">
+            Username should be an alphanumeric and between 6-15 characters 
+          </span>
+        </label>
+      </div>
+      <div class="input-container">
+        <label class="label" for="inputPassword">
+          <input
+            required
+            placeholder=" "
+            class="input"
+            id="inputPassword"
+            v-model="passwordInput"
+            @input="handleInput"
+            type="password"
+          />
+          <span class="placeholder">Password</span>
+          <span class="border-label"></span>
+        </label>
+        <span class="eye-icon">
+          <i
+            @click="eyeIconClicked"
+            :class="{'far fa-eye': !showPassword, 'far fa-eye-slash': showPassword}"
+          ></i>
+        </span>
+      </div>
+      <div class="valid-container">
+        <ul class="valid__ul">
+          <li class="valid__li">
+            <div class="flex-middle">
+              <div class="valid__img-bckgrd" v-bind:class="{checked: containsUpperCase}"></div>
+              <div>Contains Upper Case</div>
+            </div>
+          </li>
+          <li class="valid__li">
+            <div class="flex-middle">
+              <div class="valid__img-bckgrd" v-bind:class="{checked: containsLowerCase}"></div>
+              <div>Contains Lower Case</div>
+            </div>
+          </li>
+          <li class="valid__li">
+            <div class="flex-middle">
+              <div class="valid__img-bckgrd" v-bind:class="{checked: containsNumber}"></div>
+              <div>Contains Number</div>
+            </div>
+          </li>
+          <li class="valid__li">
+            <div class="flex-middle">
+              <div class="valid__img-bckgrd" v-bind:class="{checked: containsSymbol}"></div>
+              <div>Contains symbol</div>
+            </div>
+          </li>
+          <li class="valid__li">
+            <div class="flex-middle">
+              <div class="valid__img-bckgrd" v-bind:class="{checked: inputLengthValid}"></div>
+              <div>Length greater than or equal to 8</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <button class="c-btn" type="submit">Submit</button>
+    </form>
   </div>
 </template>
 
@@ -84,24 +102,52 @@ export default {
     return {
       usernameInput: "",
       passwordInput: "",
-      txtAreaInput: ""
+      txtAreaInput: "",
+      showPassword: false
     };
   },
   methods: {
-    handleInput(e) {
+    handleInput() {
+      //Regex at least contains 1 word and 1 digit
+      var regexUsn = /(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,15})$/;
       var regex = /(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,15})$/;
+
+      var errorMsg = document.getElementById("usnError");
+
+      if (!regexUsn.test(this.usernameInput)) {
+        errorMsg.style.display = "block";
+      } else {
+        errorMsg.style.display = "none";
+      }
       // At least one Upper Case, one Lower Case, one Number, and one Symbol Regex
       var regex1 = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W)(?=.{8,})/;
-      // console.log(e.target.value.match(regex1));
-      // console.log(!e.target.value.match(regex0));
-      // console.log(e.target.value);
       console.log(this.usernameInput);
-      console.log(this.passwordInput);
     },
-    handleClick() {
-      alert(
-        `Username : ${this.usernameInput}\nPassword : ${this.passwordInput}\nDescription : ${this.txtAreaInput}`
-      );
+    handleSubmit() {
+      if (
+        !this.containsUpperCase ||
+        !this.containsLowerCase ||
+        !this.containsNumber ||
+        !this.containsSymbol ||
+        !this.inputLengthValid
+      ) {
+        alert(
+          `Your password must at least contains : \n-1 upper case\n-1 lower case\n-1 digit\n-1 non-word characters\n-8 characters minimum`
+        );
+      } else {
+        alert(
+          `Username : ${this.usernameInput}\nPassword : ${this.passwordInput}\nDescription : ${this.txtAreaInput}`
+        );
+      }
+    },
+    eyeIconClicked(e) {
+      this.showPassword = !this.showPassword;
+      var inputPasswordEle = document.getElementById("inputPassword");
+      if (inputPasswordEle.type === "password") {
+        inputPasswordEle.type = "text";
+      } else {
+        inputPasswordEle.type = "password";
+      }
     }
   },
   computed: {
@@ -134,6 +180,7 @@ export default {
 }
 
 .error-msg {
+  position: absolute;
   display: none;
   font-size: 12px;
   color: red;
@@ -145,9 +192,9 @@ export default {
   padding-bottom: 20px;
 }
 
-:invalid ~ .error-msg {
+/* :invalid ~ .error-msg {
   display: block;
-}
+} */
 
 .label {
   position: relative;
@@ -249,5 +296,9 @@ export default {
 .flex-middle {
   display: flex;
   align-items: center;
+}
+
+.eye-icon {
+  position: absolute;
 }
 </style>

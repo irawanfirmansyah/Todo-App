@@ -11,7 +11,7 @@
           pattern=".{10,50}"
           required
         />
-        <span class="placeholder">Username</span>
+        <span class="placeholder">Description</span>
         <span class="border-label"></span>
         <p class="input-length">{{todoObj.description.length}} out of 50 characters</p>
       </label>
@@ -35,38 +35,6 @@
       <span>Add</span>
     </button>
   </form>
-  <!-- <b-form class="form-col" @submit="submitMethod">
-    <div v-if="isLoading">
-      <div>Loading ...</div>
-      <pulse-loader :loading="true"></pulse-loader>
-    </div>
-    <div v-else>
-      <b-form-group label="Todo description">
-        <b-form-input
-          type="text"
-          placeholder="Tell me what will you do here"
-          v-model="todoObj.description"
-          required
-          aria-required="true"
-          minlength="10"
-          maxlength="50"
-        ></b-form-input>
-        <p>{{ todoObj.description.length }} out of 50 characters</p>
-      </b-form-group>
-      <b-form-group label="Date">
-        <b-form-input
-          type="date"
-          placeholder="Pick a day"
-          v-model="todoObj.date"
-          required
-          aria-required="true"
-        ></b-form-input>
-      </b-form-group>
-      <button class="c-btn" type="submit">
-        <span>Add</span>
-      </button>
-    </div>
-  </b-form>-->
 </template>
 
 <script>

@@ -1,24 +1,9 @@
 {
   "todos": [
     {
-      "description": "Lets add some todo",
-      "date": "2019-01-01",
-      "id": "_fkrn57jcv"
-    },
-    {
-      "description": "2nd todo please",
-      "date": "2019-01-31",
-      "id": "_wft7dyiw8"
-    },
-    {
-      "description": "3rd todo would be okay, right?",
-      "date": "2019-12-31",
-      "id": "_jlbqsq36s"
-    },
-    {
-      "description": "asdsad1231",
-      "date": "2019-12-31",
-      "id": "_6r3xwte97"
+      "description": "First Todo at 8th July 2019",
+      "date": "2019-07-08",
+      "id": "_uto7n9z6z"
     }
   ]
 }
