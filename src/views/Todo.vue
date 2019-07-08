@@ -36,15 +36,14 @@
 
 <script>
 import { mapGetters, mapActions, mapState } from "vuex";
-import { FormTodo, TableTodo, ModalTodo } from "../components/TodoComponents";
 import { setTimeout } from "timers";
 
 export default {
   name: "Todo",
   components: {
-    FormTodo,
-    TableTodo,
-    ModalTodo
+    FormTodo: () => import("../components/TodoComponents/FormTodo"),
+    TableTodo: () => import("../components/TodoComponents/TableTodo"),
+    ModalTodo: () => import("../components/TodoComponents/ModalTodo")
   },
   created() {
     this.$store.dispatch("loadTodos");
@@ -75,7 +74,7 @@ export default {
       const todo = { ...this.todoObj };
 
       this.$store.dispatch("addTodo", { todo });
-      
+
       this.todoObj.id = "";
       this.todoObj.description = "";
       this.todoObj.date = "";
@@ -161,13 +160,12 @@ div[class*="col"] h4 {
   margin-bottom: 20px;
 }
 
-.vertical-line{
+.vertical-line {
   margin: -20px 20px -10px 40px;
   border-right: 1px solid rgb(219, 207, 207);
 }
 
-.todo-title{
+.todo-title {
   margin: 30px auto;
 }
-
 </style>
