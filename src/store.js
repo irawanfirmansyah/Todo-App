@@ -62,7 +62,10 @@ const store = new Vuex.Store({
     isLoading: (state) => {
       return state.loading;
     }
+  },
+  modules: {
+
   }
-})
+});
 
 export default store;

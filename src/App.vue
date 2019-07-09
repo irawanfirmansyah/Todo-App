@@ -144,6 +144,10 @@ nav a.router-link-exact-active {
   color: white;
 }
 
+nav a.router-link-exact-active::after{
+  width: 100%;
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease;
