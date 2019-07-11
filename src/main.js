@@ -6,6 +6,7 @@ import VueSweetalert2 from 'vue-sweetalert2';
 import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import _default from 'vuex';
 
 Vue.config.productionTip = false
 
